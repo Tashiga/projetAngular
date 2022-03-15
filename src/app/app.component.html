@@ -25,17 +25,17 @@
            </div>
            <div class="col-6 card-title align-self-center mb-0">
               <h5>{{stylo?.nom}}</h5>
-              <p class="m-0">{{stylo?.description}}</p>
+              <p class="m-0">{{stylo?.collection}}</p>
            </div>
         </div>
         <ul class="list-group list-group-flush">
-           <li class="list-group-item">Collection : {{stylo?.collection}}</li>
+           <li class="list-group-item">Description : {{stylo?.description}}</li>
            <li class="list-group-item">Prix : {{stylo?.prix}} €</li>
         </ul>
         <div class="card-body">
            <div class="float-right btn-group btn-group-sm">
-              <a click="onOpenModal(stylo, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-              <a click="onOpenModal(stylo, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+              <a (click)="onOpenModal(stylo, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+              <a (click)="onOpenModal(stylo, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
            </div>
         </div>
      </div>
@@ -47,7 +47,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
        <div class="modal-header">
-          <h5 class="modal-title" id="addStyloModalLabel">Add Stylo</h5>
+          <h5 class="modal-title" id="addStyloModalLabel">Ajouter Stylo</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
           </button>
