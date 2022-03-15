@@ -1,6 +1,7 @@
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, NgForm } from '@angular/forms';
 import { Stylo } from './stylo';
 import { StyloService } from './stylo.service';
 
@@ -28,5 +29,40 @@ export class AppComponent implements OnInit{
       }
     )
   }
+
+  public onAddStylo(addForm: NgForm): void {
+    document.getElementById('add-stylo-form')?.click();
+    this.styloService.addStylo(addForm.value).subscribe(
+      (response: Stylo) => {
+        console.log(response);
+        this.getStylos();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
+  public onOpenModal(stylo: any, mode: String): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if(mode === 'add') {
+      button.setAttribute('data-target', '#addStyloModal');
+    }
+    if(mode === 'edit') {
+      button.setAttribute('data-target', '#updateStyloModal');
+    }
+    if(mode === 'delete') {
+      button.setAttribute('data-target', '#deleteStyloModal');
+    }
+    container?.appendChild(button);
+    button.click();
+  }
+
 
 }
